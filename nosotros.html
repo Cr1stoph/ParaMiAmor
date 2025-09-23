@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nosotros</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="index.html">Tu</a></li>
+        <li><a href="NuestraHistoria.html">Nuestra Historia</a></li>
+      </ul>
+
+    </nav>
+  </header>
+
+  <div class="wrap">
+    <section id="nosotros" class="foto-principal from-bottom" data-io>
+      <img src="img/IMG_2226.jpg" alt="Nosotros en parcela desde abajo" loading="lazy">
+      <h1>Nosotros 🥺</h1>
+      <p>Desde hace unos 3 añitos juntos y me sigues haciendo sentir homnbre más feliz del mundo.</p>
+    </section>
+
+    <section class="fila from-left" data-io>
+      <div class="texto"><h2>Salida del amor 😘</h2><p>Besitos en los cachetitos que nunca falten, tu amor, tu felicidad, tu espontaneidad, tus chistes buenisimos y aveces fomes, que nunca me falten tus buenos días, tus buenas noches, que nunca me faltes tú, por mas enojados que estemos, por más estresados que estemos, que siempre a la cama nos vayamos con un beso .</p></div>
+      <img src="img/NosotrosTitanium3.JPG" alt="NosotrosTitanium" loading="lazy">
+    </section>
+    <section class="fila from-right" data-io>
+      <div class="texto"><h2>Que no me falte ❤️‍🩹 </h2><p>Cada mirada, cada sonrisa, quedan grabadas en mi corazón, cada detalle, cada cariño que me enloquecen, que mi piel eriza, tus palabras, tu escuchar, que de frente me hacen seguir, caminar a tu lado, de la mano es todo lo que quiero.</p></div>
+      <img src="img/IMG_0721.jpg" alt="NosotrosPiscina" loading="lazy">
+    </section>
+    <section class="fila from-left" data-io>
+      <div class="texto"><h2>Mi cielo 🏙️</h2><p>Mi hogar tu pecho, tus brazos, tu mirada, y esa voz que me encanta, tus besos tu mirada, tu perspectiva, tu sentir, tu que me haces fluir.</p></div>
+      <img src="img/IMG_2019.jpg" alt="NosotrosCama" loading="lazy">
+    </section>
+    <selection class = "fila from-right" data-io> 
+      <div class="texto"><h2>Mi vida 💘</h2><p>Ser contigo todo lo que he soñado, poder entregarte todo lo mejor de mi, crecer contigo, aprender contigo, vivir contigo, es todo lo que quiero.</p></div>
+      <img src="img/1000026672jpg.0.jpg" alt="NosotrosPiscinaMaca" loading="lazy">
+    </selection>
+    <section class="fila from-left" data-io>
+      <div class="texto"><h2>Mi corazon de melón 💏</h2><p>Eres la persona con la que quiero cumplir mis sueños y mis metas, quiero verte cumplir tus sueños, quiero que seamos tu y yo, quiero que seamos nosotros viajando, riendo, tomando ese chocolate caliente que nos espera pacientemente.</p></div>
+      <img src="img/20250415_190548838_iOS.webp" alt="NosotrosMoll" loading="lazy">
+    </section>
+    <selection class = "fila from-right" data-io> 
+      <div class="texto"><h2>El Amor de mi vida ❤️‍🔥</h2><p>Mis ojos nunca habian mirado a alguien con tanto amor, así como a ti te miro, que sepas que te amo incondicionalmente y que pase lo que pase, siempre estaré a tu lado, escuchandote, mirando tus ojos que me hipnotizan, esa sonrisa que cada vez más me enamora, que fue lo primero que me fijé en tí, que sea lo primero que vea cada mañana, te amo, con toda el alma y con todo mi corazón.</p></div>
+      <img src="img/20250331_182257323_iOS.webp" alt="NosotrosMollCreoxd" loading="lazy">
+    </selection>
+  </div>
+   <div id="lightbox" class="lightbox">
+      <span id="close">&times;</span>
+      <img id="lightbox-img" src="" alt="">
+   </div>
+  <script>
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          entry.target.classList.remove('out-view-up');
+        } else {
+          if(window.scrollY < (document.body.scrollHeight - window.innerHeight)){
+            entry.target.classList.remove('in-view');
+            entry.target.classList.add('out-view-up');
+          }
+        }
+      })
+    },{threshold:0.2});
+
+    document.querySelectorAll('[data-io]').forEach(el=>io.observe(el));
+    const images = document.querySelectorAll('.wrap img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('close');
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+      });
+    });
+    closeBtn.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+    lightbox.addEventListener('click', (e) => {
+      if (e.target !== lightboxImg) {
+        lightbox.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

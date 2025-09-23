@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tú</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="index.html">Tu</a></li>
+        <li><a href="NuestraHistoria.html">Nuestra Historia</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="wrap">
+    <section id="tu" class="foto-principal from-bottom" data-io>
+      <img src="img/TuParque.JPG" alt="Tú" loading="lazy">
+      <h1>Tú 😍</h1>
+      <p>Tú que me enamoras con tu actitud, tu personalidad, tu visión, tu amor, la manera en la que te desenvuelves.</p>
+    </section>
+    <section class="fila from-left" data-io>
+      <div class="texto"><h2>Tu personalidad 🤩</h2><p>Tu seguridad, tu optimismo, tu nunca rendirte, tu valentía, tu voluntad, tus ganas de seguir adelante, me haces admirarte con cada acción y cada paso que das.</p></div>
+      <img src="img/IMG_1169.jpg" alt="Galería" loading="lazy">
+    </section>
+    <section class="fila from-right" data-io>
+      <div class="texto"><h2>Tu fotenicidad 📸</h2><p>Amo sacarte fotos, amo que poses de millones de maneras y que cada foto salga maravillosa por más que tu hayes que es la peor foto del mundo, te ves hermosa en cada foto que te he sacado, eres mi modelo.</p></div>
+      <img src="img/TuParque1.JPG" alt="Colaborativos" loading="lazy">
+    </section>
+    <section class="fila from-left" data-io>
+      <div class="texto"><h2>Esos ojazos 👀</h2><p>Hablar de ti me encanta y porque no hablar de tu hermosura, comenzando con tus ojos hermosos, con su forma, con su color, con esa alma que dejan ver, que no para de enamorarme, y no solo tus ojos, tu pelo, tu carita, tu nariz.</p></div>
+      <img src="img/TuTitanium.JPG" alt="Contacto" loading="lazy">
+    </section>
+    <section class="fila from-right" data-io>
+      <div class="texto"><h2>Tu cuerpo 😍</h2><p>Tu cuello, tu pecho, tus pechos tus brazos, me enloqueces, alteeras mis sentidos a más no poder y cuando puedo acercarme más al punto de tocar tu piel, la sensacion de besar tus labios no tiene nombre y me fascina.</p></div>
+      <img src="img/RuParcela.webp" alt="Colaborativos" loading="lazy">
+    </section>
+    <section class="fila from-left" data-io>
+      <div class="texto"><h2>Tus labios 🫦</h2><p>Besar tus labios me enloquece, es una sensación que no puedo explicar que me hace querer besarte todo el tiempo, es que me encantas, me gustas me fascinas.</p></div>
+      <img src="img/IMG_2526.webp" alt="Contacto" loading="lazy">
+    </section>
+    <section class="fila from-right" data-io>
+      <div class="texto"><h2>Tu flow 💃</h2><p>Tu andar, esa manera de desprender aura como dicen los jovenes, caminas y deslumbras a todos, eres única, eres magnifica, siempre destacas, y porque no hablar de tus piernas, que son HERMOSAS, no tiene sentido lo perfecta que eres tu.</p></div>
+      <img src="img/TuParcela1.webp" alt="Contacto" loading="lazy">
+    </section>
+  </div>
+  <div id="lightbox" class="lightbox">
+    <span id="close">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  <script>
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          entry.target.classList.remove('out-view-up');
+        } else {
+          if(window.scrollY < (document.body.scrollHeight - window.innerHeight)){
+            entry.target.classList.remove('in-view');
+            entry.target.classList.add('out-view-up');
+          }
+        }
+      })
+    },{threshold:0.2});
+    document.querySelectorAll('[data-io]').forEach(el=>io.observe(el));
+    const images = document.querySelectorAll('.wrap img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('close');
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+      });
+    });
+    closeBtn.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+    lightbox.addEventListener('click', (e) => {
+      if (e.target !== lightboxImg) {
+        lightbox.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
